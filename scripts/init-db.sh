@@ -8,16 +8,24 @@ set -x
 # exit on error
 set -eo pipefail
 
+# Check if psql is installed
+if ! [ -x "$(command -v psql)" ]; then
+	echo 'Error: psql is not installed.' >&2
+	exit 1
+fi
+
 # Check for database variables otherwise use defaults
 DB_USER="${POSTGRES_USER:=postgres}"
 DB_PASSWORD="${POSTGRES_PASSWORD:=postgrespw}"
 DB_NAME="${POSTGRES_DB:=bikesense}"
 DB_PORT="${POSTGRES_PORT:=5432}"
 DB_HOST="${POSTGRES_HOST:=localhost}"
+DB_MIGRATIONS="${DB_MIGRATIONS:=./migrations.sql}"
+CONTAINER_NAME="${POSTGRES_CONTAINER:=bikesense-postgres}"
 
 if [[ -z "${SKIP_DOCKER}" ]]; then
 	docker run \
-		--name dev-postgres-esis \
+		--name ${CONTAINER_NAME} \
 		-e POSTGRES_USER=${DB_USER} \
 		-e POSTGRES_PASSWORD=${DB_PASSWORD} \
 		-e POSTGRES_DB=${DB_NAME} \
@@ -27,4 +35,14 @@ if [[ -z "${SKIP_DOCKER}" ]]; then
 # ^ Increased maximum number of connections for testing purposes
 fi
 
->&2 echo "Postgres has been initialized, ready to go!"
+export PGPASSWORD="${DB_PASSWORD}"
+until psql -h "${DB_HOST}" -U "${DB_USER}" -p "${DB_PORT}" -d "postgres" -c '\q'; do
+	>&2 echo "Postgres is unavailable - sleeping"
+	sleep 1
+done
+
+>&2 echo "Postgres is up and running on ${DB_HOST}:${DB_PORT}!"
+
+psql -h ${DB_HOST} -U ${DB_USER} -d ${DB_NAME} -a -f ${DB_MIGRATIONS}
+
+>&2 echo "Postgres has been migrated, ready to go!"

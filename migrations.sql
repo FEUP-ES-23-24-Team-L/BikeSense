@@ -8,12 +8,12 @@ CREATE TABLE IF NOT EXISTS bikes (
 
 CREATE TABLE IF NOT EXISTS trip (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  bike_id uuid REFERENCES bikes(id),
-  sensor_unit_id uuid REFERENCES sensor_units(id),
-  date date,
-  time timestamp,
-  duration interval,
-  travel_distance float
+  bike_id uuid REFERENCES bikes(id) NOT NULL,
+  sensor_unit_id uuid REFERENCES sensor_units(id) NOT NULL,
+  date date NOT NULL,
+  time timestamp NOT NULL,
+  duration interval NOT NULL,
+  travel_distance float NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS sensor_data (
