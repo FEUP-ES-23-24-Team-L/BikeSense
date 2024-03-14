@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NAME="${CONTAINER_NAME:=dev-postgres-esis}"
+NAME="${CONTAINER_NAME:=bikesense-postgres}"
 DB_USER="${POSTGRES_USER:=postgres}"
 DB_PASSWORD="${POSTGRES_PASSWORD:=postgrespw}"
 DB_NAME="${POSTGRES_DB:=bikesense}"

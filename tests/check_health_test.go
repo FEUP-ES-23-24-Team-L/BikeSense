@@ -1,7 +1,7 @@
 package tests
 
 import (
-	server "bikesense-web/internal"
+	server "bikesense-web/internal/server"
 	"net/http"
 	"testing"
 )
