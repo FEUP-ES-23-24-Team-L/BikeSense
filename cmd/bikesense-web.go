@@ -34,7 +34,7 @@ func main() {
 	}
 
 	// Connect to the database
-	dbApi.InitDB(config)
+	db := dbApi.InitDB(config)
 
-	server.Run()
+	server.Run(db)
 }
