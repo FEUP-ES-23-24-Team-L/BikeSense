@@ -19,13 +19,10 @@ type SensorUnit struct {
 }
 
 type Trip struct {
-	Time time.Time
 	gorm.Model
-	DataPoint      []DataPoint
-	Duration       time.Duration
-	BikeID         uint
-	SensorUnitID   uint
-	TravelDistance float32
+	DataPoint    []DataPoint `json:"skipWhenMarshal"`
+	BikeID       uint        `json:"bike_id"`
+	SensorUnitID uint        `json:"sensor_unit_id"`
 }
 
 type DataPoint struct {
