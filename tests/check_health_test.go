@@ -8,7 +8,7 @@ import (
 
 func TestCheckHealth(t *testing.T) {
 	// launch server
-	go server.Run()
+	go server.Run(GetTestDB())
 
 	// TestCheckHealth
 	resp, err := http.Get("http://localhost:8080/CheckHealth")

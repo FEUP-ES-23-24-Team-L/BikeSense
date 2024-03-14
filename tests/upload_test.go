@@ -4,7 +4,6 @@ import (
 	dbApi "bikesense-web/internal/database"
 	"encoding/json"
 	"testing"
-	"time"
 )
 
 func TestDataInsertion(t *testing.T) {
@@ -31,16 +30,6 @@ func TestDataInsertion(t *testing.T) {
 	t.Log("Deserialization successfull!")
 	t.Log("Timestamp is: ", dataPoint.Timestamp)
 
-	config := dbApi.Config{
-		Host:     "localhost",
-		User:     "postgres",
-		Password: "postgrespw",
-		DbName:   "bikesense",
-		SslMode:  "disable",
-		TimeZone: "Europe/Lisbon",
-		Port:     5432,
-	}
-
 	unit := dbApi.SensorUnit{
 		Code: "123",
 	}
@@ -49,7 +38,7 @@ func TestDataInsertion(t *testing.T) {
 		Code: "456",
 	}
 
-	db := dbApi.InitDB(config)
+	db := GetTestDB()
 
 	tx := db.Begin()
 	if tx.Error != nil {
@@ -67,11 +56,8 @@ func TestDataInsertion(t *testing.T) {
 	}
 
 	trip := dbApi.Trip{
-		Time:           time.Now(),
-		Duration:       1 * time.Hour,
-		BikeID:         bike.ID,
-		SensorUnitID:   unit.ID,
-		TravelDistance: 10.5,
+		BikeID:       bike.ID,
+		SensorUnitID: unit.ID,
 	}
 
 	if err := tx.Create(&trip).Error; err != nil {
