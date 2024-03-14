@@ -33,8 +33,5 @@ func main() {
 		Port:     uint(port),
 	}
 
-	// Connect to the database
-	db := dbApi.InitDB(config)
-
-	server.Run(db)
+	server.Run(dbApi.InitDB(config))
 }
