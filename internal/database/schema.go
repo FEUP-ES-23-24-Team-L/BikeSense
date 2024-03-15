@@ -28,7 +28,7 @@ type Trip struct {
 type DataPoint struct {
 	Timestamp time.Time `json:"timestamp"`
 	gorm.Model
-	TripID               uint
+	TripID               uint    `json:"trip_id"`
 	Location             float32 `json:"location"`
 	NoiseLevel           float32 `json:"noise_level"`
 	Temperature          float32 `json:"temperature"`
