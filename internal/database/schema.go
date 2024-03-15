@@ -7,27 +7,27 @@ import (
 )
 
 type Bike struct {
-	gorm.Model
-	Code string
-	trip Trip
+	gorm.Model `json:"skipWhenMarshal"`
+	Code       string `json:"code"`
+	trip       Trip
 }
 
 type SensorUnit struct {
-	gorm.Model
-	Code string
-	trip Trip
+	gorm.Model `json:"skipWhenMarshal"`
+	Code       string `json:"code"`
+	Trip       Trip
 }
 
 type Trip struct {
 	gorm.Model
-	DataPoint    []DataPoint `json:"skipWhenMarshal"`
+	DataPoint    []DataPoint `json:"-"`
 	BikeID       uint        `json:"bike_id"`
 	SensorUnitID uint        `json:"sensor_unit_id"`
 }
 
 type DataPoint struct {
-	Timestamp time.Time `json:"timestamp"`
-	gorm.Model
+	Timestamp            time.Time `json:"timestamp"`
+	gorm.Model           `json:"-"`
 	TripID               uint    `json:"trip_id"`
 	Location             float32 `json:"location"`
 	NoiseLevel           float32 `json:"noise_level"`
