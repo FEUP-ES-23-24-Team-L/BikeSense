@@ -25,6 +25,7 @@ func Run(db *gorm.DB) {
 
 	router.GET("/CheckHealth", routes.CheckHealth)
 	router.POST("/Trip", routes.PostTrip)
+	router.POST("/Trip/UploadData", routes.PostTripData)
 
 	router.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }

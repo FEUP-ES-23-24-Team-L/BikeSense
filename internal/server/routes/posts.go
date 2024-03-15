@@ -13,13 +13,9 @@ func PostTrip(c *gin.Context) {
 	var trip dbApi.Trip
 
 	if err := c.ShouldBindJSON(&trip); err != nil {
-		example := dbApi.Trip{
-			BikeID:       0,
-			SensorUnitID: 0,
-		}
 		c.JSON(
 			http.StatusBadRequest,
-			gin.H{"error": err.Error(), "example": example},
+			gin.H{"error": err.Error()},
 		)
 		return
 	}
@@ -36,4 +32,25 @@ func PostTrip(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusCreated, trip)
+}
+
+func PostTripData(c *gin.Context) {
+	var tripData []dbApi.DataPoint
+	if err := c.ShouldBindJSON(&tripData); err != nil {
+		c.JSON(
+			http.StatusBadRequest,
+			gin.H{"error": err.Error()},
+		)
+		return
+	}
+	db, exists := c.Get("db")
+	if !exists {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "db connection not found in context"})
+		return
+	}
+	if err := db.(*gorm.DB).Create(&tripData).Error; err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusCreated, tripData)
 }
