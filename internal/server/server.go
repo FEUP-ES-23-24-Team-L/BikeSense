@@ -24,6 +24,8 @@ func Run(db *gorm.DB) {
 	router.Use(dbMiddleware(db))
 
 	router.GET("/CheckHealth", routes.CheckHealth)
+	router.POST("/SensorUnit", routes.PostSensorUnit)
+	router.POST("/Bike", routes.PostBike)
 	router.POST("/Trip", routes.PostTrip)
 	router.POST("/Trip/UploadData", routes.PostTripData)
 
