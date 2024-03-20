@@ -7,14 +7,22 @@ import (
 	"gorm.io/gorm"
 )
 
+type DB_ENV string
+
+const (
+	DEV  DB_ENV = "dev"
+	PROD DB_ENV = "prod"
+)
+
 type Config struct {
-	Host     string
-	User     string
-	Password string
-	DbName   string
-	SslMode  string
-	TimeZone string
-	Port     uint
+	Host        string
+	User        string
+	Password    string
+	DbName      string
+	SslMode     string
+	TimeZone    string
+	Environment DB_ENV
+	Port        uint
 }
 
 func InitDB(config Config) *gorm.DB {
@@ -29,7 +37,9 @@ func InitDB(config Config) *gorm.DB {
 		config.TimeZone,
 	)
 
-	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
+		PrepareStmt: config.Environment == PROD,
+	})
 	if err != nil {
 		panic(err)
 	}

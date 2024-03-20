@@ -24,13 +24,14 @@ func main() {
 	}
 
 	config := dbApi.Config{
-		Host:     os.Getenv("DB_HOST"),
-		User:     os.Getenv("DB_USER"),
-		Password: os.Getenv("DB_PASSWORD"),
-		DbName:   os.Getenv("DB_NAME"),
-		SslMode:  os.Getenv("DB_SSLMODE"),
-		TimeZone: os.Getenv("DB_TIMEZONE"),
-		Port:     uint(port),
+		Host:        os.Getenv("DB_HOST"),
+		User:        os.Getenv("DB_USER"),
+		Password:    os.Getenv("DB_PASSWORD"),
+		DbName:      os.Getenv("DB_NAME"),
+		SslMode:     os.Getenv("DB_SSLMODE"),
+		TimeZone:    os.Getenv("DB_TIMEZONE"),
+		Port:        uint(port),
+		Environment: dbApi.PROD,
 	}
 
 	server.Run(dbApi.InitDB(config))
