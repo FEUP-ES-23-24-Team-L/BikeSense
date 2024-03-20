@@ -17,7 +17,7 @@ func main() {
 		fmt.Println("Error loading .env file")
 	}
 
-	port, err := strconv.Atoi(os.Getenv("PORT"))
+	port, err := strconv.Atoi(os.Getenv("DB_PORT"))
 	if err != nil {
 		fmt.Println("Error parsing port, Trying default port 5432")
 		port = 5432
