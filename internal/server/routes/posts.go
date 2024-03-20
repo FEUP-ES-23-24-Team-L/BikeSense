@@ -9,90 +9,56 @@ import (
 	"gorm.io/gorm"
 )
 
-func PostSensorUnit(c *gin.Context) {
-	var sensorUnit dbApi.SensorUnit
-
-	if err := c.ShouldBindJSON(&sensorUnit); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+func bindAndCreateRecord(c *gin.Context, record_type any) {
+	bound_record, err := bindRecord(c, record_type)
+	if err != nil {
+		return
 	}
 
+	createRecord(c, bound_record)
+}
+
+func bindRecord(c *gin.Context, record_type any) (any, error) {
+	if err := c.ShouldBindJSON(&record_type); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"Parsing error": err.Error()})
+		return nil, err
+	}
+
+	return record_type, nil
+}
+
+func createRecord(c *gin.Context, record any) {
 	db, exists := c.Get("db")
 	if !exists {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "db connection not found in context"})
 		return
 	}
 
-	if err := db.(*gorm.DB).Create(&sensorUnit).Error; err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+	if err := db.(*gorm.DB).Create(record).Error; err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"DB error": err.Error()})
 		return
 	}
 
-	c.JSON(http.StatusCreated, sensorUnit)
+	c.JSON(http.StatusCreated, record)
+}
+
+func PostSensorUnit(c *gin.Context) {
+	bindAndCreateRecord(c, &dbApi.SensorUnit{})
 }
 
 func PostBike(c *gin.Context) {
-	var bike dbApi.Bike
-
-	if err := c.ShouldBindJSON(&bike); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-	}
-
-	db, exists := c.Get("db")
-	if !exists {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "db connection not found in context"})
-		return
-	}
-
-	if err := db.(*gorm.DB).Create(&bike).Error; err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
-	}
-
-	c.JSON(http.StatusCreated, bike)
+	bindAndCreateRecord(c, &dbApi.Bike{})
 }
 
 func PostTrip(c *gin.Context) {
-	var trip dbApi.Trip
-
-	if err := c.ShouldBindJSON(&trip); err != nil {
-		c.JSON(
-			http.StatusBadRequest,
-			gin.H{"error": err.Error()},
-		)
-		return
-	}
-
-	db, exists := c.Get("db")
-	if !exists {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "db connection not found in context"})
-		return
-	}
-
-	if err := db.(*gorm.DB).Create(&trip).Error; err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
-	}
-
-	c.JSON(http.StatusCreated, trip)
+	bindAndCreateRecord(c, &dbApi.Trip{})
 }
 
 func PostTripData(c *gin.Context) {
-	var tripData []dbApi.DataPoint
-	if err := c.ShouldBindJSON(&tripData); err != nil {
-		c.JSON(
-			http.StatusBadRequest,
-			gin.H{"error": err.Error()},
-		)
-		return
+	var data []dbApi.DataPoint
+	if err := c.ShouldBindJSON(&data); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"Parsing error": err.Error()})
 	}
-	db, exists := c.Get("db")
-	if !exists {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "db connection not found in context"})
-		return
-	}
-	if err := db.(*gorm.DB).Create(&tripData).Error; err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
-	}
-	c.JSON(http.StatusCreated, tripData)
+
+	createRecord(c, data)
 }
