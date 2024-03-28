@@ -2,6 +2,7 @@ package database
 
 import (
 	"fmt"
+	"log"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -25,17 +26,33 @@ type Config struct {
 	Port        uint
 }
 
-func InitDB(config Config) *gorm.DB {
-	dsn := fmt.Sprintf(
+func (c Config) GetFullDsn() string {
+	return fmt.Sprintf(
 		"host=%s user=%s password=%s dbname=%s port=%d sslmode=%s TimeZone=%s",
-		config.Host,
-		config.User,
-		config.Password,
-		config.DbName,
-		config.Port,
-		config.SslMode,
-		config.TimeZone,
+		c.Host,
+		c.User,
+		c.Password,
+		c.DbName,
+		c.Port,
+		c.SslMode,
+		c.TimeZone,
 	)
+}
+
+func (c Config) GetDsnNoDBName() string {
+	return fmt.Sprintf(
+		"host=%s user=%s password=%s port=%d sslmode=%s TimeZone=%s",
+		c.Host,
+		c.User,
+		c.Password,
+		c.Port,
+		c.SslMode,
+		c.TimeZone,
+	)
+}
+
+func OpenAndMigrateDB(config Config) *gorm.DB {
+	dsn := config.GetFullDsn()
 
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
 		PrepareStmt: config.Environment == PROD,
@@ -45,9 +62,9 @@ func InitDB(config Config) *gorm.DB {
 	}
 
 	// TODO: Add logging
-	fmt.Println("Database connection established")
+	log.Println("Database connection established")
 	db.AutoMigrate(&SensorUnit{}, &Bike{}, &Trip{}, &DataPoint{})
-	fmt.Println("Database schema migrated")
+	log.Println("Database schema migrated")
 
 	return db
 }

@@ -34,5 +34,5 @@ func main() {
 		Environment: dbApi.PROD,
 	}
 
-	server.Run(dbApi.InitDB(config))
+	server.Run(dbApi.OpenAndMigrateDB(config))
 }
