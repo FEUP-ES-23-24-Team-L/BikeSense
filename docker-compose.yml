@@ -1,0 +1,54 @@
+services:
+  # Postgres Database
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_PASSWORD: postgrespw # Set a strong password
+      POSTGRES_USER: postgres
+      POSTGRES_DB: bikesense # Replace with your database name
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # Persistant storage for data
+    restart: always
+
+  # pgAdmin for Database Management
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    ports:
+      - 5050:80 # Map container port 5050 to host port 80 (default pgAdmin port)
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@pgadmin.com # Set an email address
+      PGADMIN_DEFAULT_PASSWORD: password # Set a strong password
+    restart: always
+
+  # Grafana for Monitoring (configuration is needed)
+  grafana:
+    image: grafana/grafana-oss:latest
+    ports:
+      - "3000:3000" # Map container port 3000 to host port 3000
+    volumes:
+      - grafana_data:/var/lib/grafana # Persistant storage for Grafana data
+
+  # Your Go Web App
+  go-app:
+    image: dvalinn/bikesense-web:latest # Replace with your details
+    environment:
+      DB_HOST: postgres
+      DB_USER: postgres
+      DB_PASSWORD: postgrespw
+      DB_NAME: bikesense
+      DB_SSLMODE: disable
+      DB_TIMEZONE: EUROPE/LISBON
+      DB_PORT: 5432
+    build:
+      context: .
+      dockerfile: dockerfile
+    ports:
+      - "8080:8080" # Map container port 8080 to host port 8080
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data: {}
+  grafana_data: {}
