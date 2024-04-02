@@ -1,14 +1,14 @@
 package tests
 
 import (
-	server "bikesense-web/internal"
+	server "bikesense-web/internal/server"
 	"net/http"
 	"testing"
 )
 
 func TestCheckHealth(t *testing.T) {
 	// launch server
-	go server.Run()
+	go server.Run(GetTestDB(t))
 
 	// TestCheckHealth
 	resp, err := http.Get("http://localhost:8080/CheckHealth")
