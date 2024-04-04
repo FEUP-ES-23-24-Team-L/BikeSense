@@ -51,20 +51,44 @@ func (c Config) GetDsnNoDBName() string {
 	)
 }
 
+func (c Config) Validate() error {
+	if c.Host == "" {
+		return fmt.Errorf("host is required")
+	}
+	if c.User == "" {
+		return fmt.Errorf("user is required")
+	}
+	if c.Password == "" {
+		return fmt.Errorf("password is required")
+	}
+	if c.DbName == "" {
+		return fmt.Errorf("dbName is required")
+	}
+	if c.SslMode == "" {
+		return fmt.Errorf("sslMode is required")
+	}
+	if c.TimeZone == "" {
+		return fmt.Errorf("timeZone is required")
+	}
+	return nil
+}
+
 func OpenAndMigrateDB(config Config) *gorm.DB {
 	dsn := config.GetFullDsn()
 
+	log.Println("[DB Startup] Connecting to database name: ", config.DbName)
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
 		PrepareStmt: config.Environment == PROD,
 	})
 	if err != nil {
-		panic(err)
+		log.Fatalf("[DB Startup] Error connecting to database: %v", err)
 	}
+	log.Println("[DB Startup] Database connection established")
 
-	// TODO: Add logging
-	log.Println("Database connection established")
-	db.AutoMigrate(&SensorUnit{}, &Bike{}, &Trip{}, &DataPoint{})
-	log.Println("Database schema migrated")
+	if err := db.AutoMigrate(&SensorUnit{}, &Bike{}, &Trip{}, &DataPoint{}); err != nil {
+		log.Fatalf("[DB Startup] Error migrating database schema: %v", err)
+	}
+	log.Println("[DB Startup] Database schema migrated")
 
 	return db
 }

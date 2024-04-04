@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"strconv"
 
@@ -12,14 +13,16 @@ import (
 )
 
 func main() {
-	err := godotenv.Load(".env")
-	if err != nil {
-		fmt.Println("Error loading .env file")
+	if os.Getenv("GIN_MODE") == "" {
+		err := godotenv.Load(".env")
+		if err != nil {
+			log.Println("[BKS MAIN - WARN]Error loading .env file")
+		}
 	}
 
 	port, err := strconv.Atoi(os.Getenv("DB_PORT"))
 	if err != nil {
-		fmt.Println("Error parsing port, Trying default port 5432")
+		fmt.Println("[BKS MAIN - WARN] Error parsing db port, Trying default port 5432")
 		port = 5432
 	}
 
@@ -32,6 +35,10 @@ func main() {
 		TimeZone:    os.Getenv("DB_TIMEZONE"),
 		Port:        uint(port),
 		Environment: dbApi.PROD,
+	}
+
+	if err := config.Validate(); err != nil {
+		log.Fatalf("[BKS MAIN - ERROR] Invalid database configuration: %v", err)
 	}
 
 	server.Run(dbApi.OpenAndMigrateDB(config))

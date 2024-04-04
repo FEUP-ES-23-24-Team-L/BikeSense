@@ -41,6 +41,8 @@ services:
       DB_SSLMODE: disable
       DB_TIMEZONE: EUROPE/LISBON
       DB_PORT: 5432
+      GIN_MODE: release
+      PORT: 8080
     build:
       context: .
       dockerfile: dockerfile
