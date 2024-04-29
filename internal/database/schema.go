@@ -1,8 +1,6 @@
 package database
 
-import (
-	"time"
-)
+import "time"
 
 type Bike struct {
 	Code string `json:"code"`
@@ -24,7 +22,8 @@ type Trip struct {
 }
 
 type DataPoint struct {
-	GPGGAData            `json:"gpgga_data"`
+	Timestamp            time.Time `json:"timestamp"`
+	GPSData              `json:"gps_data"`
 	ID                   uint    `json:"id" gorm:"primaryKey"`
 	TripID               uint    `json:"trip_id"`
 	NoiseLevel           float32 `json:"noise_level"`
@@ -36,11 +35,15 @@ type DataPoint struct {
 	PolutionParticlesPPM int32   `json:"polution_particles_ppm"`
 }
 
-type GPGGAData struct {
-	Timestamp      time.Time `json:"timestamp"`
-	Latitude       float64   `json:"latitude"`
-	Longitude      float64   `json:"longitude"`
-	FixQuality     int       `json:"fix_quality"`
-	SatellitesUsed int       `json:"satellites_used"`
-	Altitude       float64   `json:"altitude"`
+type GPSData struct {
+	Latitude        float64 `json:"latitude"`
+	Longitude       float64 `json:"longitude"`
+	Speed           float64 `json:"speed"`
+	Course          float64 `json:"course"`
+	Altitute        float64 `json:"altitute"`
+	SatellitesInUse int     `json:"satellites_in_use"`
+	FixType         int     `json:"fix_type"`
+	HDOP            float32 `json:"hdop"`
+	VDOP            float32 `json:"vdop"`
+	PDOP            float32 `json:"pdop"`
 }

@@ -1,10 +1,7 @@
 package routes
 
 import (
-	"fmt"
-	"log"
 	"net/http"
-	"time"
 
 	dbApi "bikesense-web/internal/database"
 
@@ -57,54 +54,18 @@ func PostTrip(c *gin.Context) {
 	bindAndCreateRecord(c, &dbApi.Trip{})
 }
 
-type rawTripDataPoint struct {
-	Timestamp            time.Time `json:"timestamp"`
-	GPGGAMessage         string    `json:"gpgga_message"`
-	ID                   uint      `json:"id" gorm:"primaryKey"`
-	TripID               uint      `json:"trip_id"`
-	NoiseLevel           float32   `json:"noise_level"`
-	Temperature          float32   `json:"temperature"`
-	Humidity             float32   `json:"humidity"`
-	UVLevel              float32   `json:"uv_level"`
-	Luminosity           float32   `json:"luminosity"`
-	CarbonMonoxideLevel  float32   `json:"carbon_monoxide_level"`
-	PolutionParticlesPPM int32     `json:"polution_particles_ppm"`
-}
-
-// TODO: Return error if location string is not in the correct format
-func (data *rawTripDataPoint) intoDataPoint() dbApi.DataPoint {
-	// Parse location string
-	gpgga, err := dbApi.DecodeGPGGA(data.GPGGAMessage)
-	if err != nil {
-		log.Println(fmt.Errorf("error decoding GPGGA message: %v", err))
-		return dbApi.DataPoint{}
-	}
-
-	return dbApi.DataPoint{
-		GPGGAData:            *gpgga,
-		ID:                   0,
-		TripID:               data.TripID,
-		NoiseLevel:           data.NoiseLevel,
-		Temperature:          data.Temperature,
-		Humidity:             data.Humidity,
-		UVLevel:              data.UVLevel,
-		Luminosity:           data.Luminosity,
-		CarbonMonoxideLevel:  data.CarbonMonoxideLevel,
-		PolutionParticlesPPM: data.PolutionParticlesPPM,
-	}
-}
-
 func PostTripData(c *gin.Context) {
-	var rawData []rawTripDataPoint
-	if err := c.ShouldBindJSON(&rawData); err != nil {
+	// bindAndCreateRecord(c, &dbApi.DataPoint{})
+	var data []dbApi.DataPoint
+	if err := c.ShouldBindJSON(&data); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"Parsing error": err.Error()})
 	}
 
-	// Convert raw data to DataPoint
-	data := make([]dbApi.DataPoint, len(rawData))
-	for i, rawPoint := range rawData {
-		data[i] = rawPoint.intoDataPoint()
-	}
-
 	createRecord(c, data)
+
+	// Convert raw data to DataPoint
+	// data := make([]dbApi.DataPoint, len(rawData))
+	// for i, rawPoint := range rawData {
+	// 	data[i] = rawPoint.intoDataPoint()
+	// }
 }

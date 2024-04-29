@@ -51,13 +51,17 @@ func TestDataInsertion(t *testing.T) {
 	}
 
 	dataPoint := dbApi.DataPoint{
-		GPGGAData: dbApi.GPGGAData{
-			Timestamp:      time.Now(),
-			Latitude:       123.123,
-			Longitude:      123.123,
-			FixQuality:     1,
-			SatellitesUsed: 2,
-			Altitude:       1123,
+		GPSData: dbApi.GPSData{
+			Latitude:        200,
+			Longitude:       100,
+			Speed:           230,
+			Altitute:        30,
+			Course:          23,
+			SatellitesInUse: 1,
+			FixType:         2,
+			HDOP:            1,
+			VDOP:            1,
+			PDOP:            1,
 		},
 		ID:                   bikeID,
 		TripID:               tripID,
@@ -69,6 +73,8 @@ func TestDataInsertion(t *testing.T) {
 		CarbonMonoxideLevel:  123,
 		PolutionParticlesPPM: 12,
 	}
+
+	dataPoint.Timestamp = time.Now()
 
 	err = db.Create(&dataPoint).Error
 	if err != nil {
