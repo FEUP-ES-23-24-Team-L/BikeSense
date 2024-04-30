@@ -6,6 +6,7 @@ import (
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+	"gorm.io/gorm/schema"
 )
 
 type DB_ENV string
@@ -79,6 +80,10 @@ func OpenAndMigrateDB(config Config) *gorm.DB {
 	log.Println("[DB Startup] Connecting to database name: ", config.DbName)
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
 		PrepareStmt: config.Environment == PROD,
+		NamingStrategy: schema.NamingStrategy{
+			TablePrefix:   fmt.Sprintf("%s.", config.Environment),
+			SingularTable: false,
+		},
 	})
 	if err != nil {
 		log.Fatalf("[DB Startup] Error connecting to database: %v", err)
