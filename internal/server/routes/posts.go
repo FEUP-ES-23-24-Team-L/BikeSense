@@ -55,17 +55,11 @@ func PostTrip(c *gin.Context) {
 }
 
 func PostTripData(c *gin.Context) {
-	// bindAndCreateRecord(c, &dbApi.DataPoint{})
+	// bindAndCreateRecord(c, &[]dbApi.DataPoint{})
 	var data []dbApi.DataPoint
 	if err := c.ShouldBindJSON(&data); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"Parsing error": err.Error()})
 	}
 
 	createRecord(c, data)
-
-	// Convert raw data to DataPoint
-	// data := make([]dbApi.DataPoint, len(rawData))
-	// for i, rawPoint := range rawData {
-	// 	data[i] = rawPoint.intoDataPoint()
-	// }
 }
