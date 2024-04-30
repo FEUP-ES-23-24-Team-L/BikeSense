@@ -20,14 +20,16 @@ func Run(db *gorm.DB) {
 	}
 
 	router := gin.Default()
-
 	router.Use(dbMiddleware(db))
 
-	router.GET("/CheckHealth", routes.CheckHealth)
-	router.POST("/SensorUnit", routes.PostSensorUnit)
-	router.POST("/Bike", routes.PostBike)
-	router.POST("/Trip", routes.PostTrip)
-	router.POST("/Trip/UploadData", routes.PostTripData)
+	v1 := router.Group("/api/v1")
+	{
+		v1.GET("/check_health", routes.CheckHealth)
+		v1.POST("/sensor_unit/register", routes.PostSensorUnit)
+		v1.POST("/bike/register", routes.PostBike)
+		v1.POST("/trip/register", routes.PostTrip)
+		v1.POST("/trip/upload_data", routes.PostTripData)
+	}
 
-	router.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
+	router.Run(":8080") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
