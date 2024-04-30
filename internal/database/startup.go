@@ -78,10 +78,15 @@ func OpenAndMigrateDB(config Config) *gorm.DB {
 	dsn := config.GetFullDsn()
 
 	log.Println("[DB Startup] Connecting to database name: ", config.DbName)
+	schemaName := "dev"
+	if config.Environment == PROD {
+		schemaName = "prod"
+	}
+
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
 		PrepareStmt: config.Environment == PROD,
 		NamingStrategy: schema.NamingStrategy{
-			TablePrefix:   fmt.Sprintf("%s.", config.Environment),
+			TablePrefix:   fmt.Sprintf("%s.", schemaName),
 			SingularTable: false,
 		},
 	})
@@ -89,6 +94,11 @@ func OpenAndMigrateDB(config Config) *gorm.DB {
 		log.Fatalf("[DB Startup] Error connecting to database: %v", err)
 	}
 	log.Println("[DB Startup] Database connection established")
+
+	query := fmt.Sprintf("CREATE SCHEMA %s;", schemaName)
+	if err := db.Exec(query).Error; err != nil {
+		log.Fatalf("[DB Startup] Error creating schema: %v", err)
+	}
 
 	if err := db.AutoMigrate(&SensorUnit{}, &Bike{}, &Trip{}, &DataPoint{}); err != nil {
 		log.Fatalf("[DB Startup] Error migrating database schema: %v", err)
