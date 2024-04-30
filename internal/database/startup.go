@@ -52,7 +52,7 @@ func (c Config) GetDsnNoDBName() string {
 	)
 }
 
-func (c Config) Validate() error {
+func (c *Config) Validate() error {
 	if c.Host == "" {
 		return fmt.Errorf("host is required")
 	}
@@ -70,6 +70,9 @@ func (c Config) Validate() error {
 	}
 	if c.TimeZone == "" {
 		return fmt.Errorf("timeZone is required")
+	}
+	if c.Environment == "" {
+		c.Environment = DEV
 	}
 	return nil
 }

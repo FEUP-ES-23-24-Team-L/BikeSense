@@ -34,7 +34,7 @@ func main() {
 		SslMode:     os.Getenv("DB_SSLMODE"),
 		TimeZone:    os.Getenv("DB_TIMEZONE"),
 		Port:        uint(port),
-		Environment: dbApi.PROD,
+		Environment: dbApi.DB_ENV(os.Getenv("DB_ENV")),
 	}
 
 	if err := config.Validate(); err != nil {
