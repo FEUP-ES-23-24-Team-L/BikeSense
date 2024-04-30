@@ -10,8 +10,10 @@ func TestCheckHealth(t *testing.T) {
 	// launch server
 	go server.Run(GetTestDB(t))
 
+	endpoint := "http://localhost:8080/api/v1/check_health"
+
 	// TestCheckHealth
-	resp, err := http.Get("http://localhost:8080/CheckHealth")
+	resp, err := http.Get(endpoint)
 	if err != nil {
 		t.Fatalf("Expected no error, but got %v", err)
 	}
