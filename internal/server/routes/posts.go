@@ -2,30 +2,13 @@ package routes
 
 import (
 	"net/http"
+	"strconv"
 
 	dbApi "bikesense-web/internal/database"
 
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 )
-
-func bindAndCreateRecord(c *gin.Context, record_type any) {
-	bound_record, err := bindRecord(c, record_type)
-	if err != nil {
-		return
-	}
-
-	createRecord(c, bound_record)
-}
-
-func bindRecord(c *gin.Context, record_type any) (any, error) {
-	if err := c.ShouldBindJSON(&record_type); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"Parsing error": err.Error()})
-		return nil, err
-	}
-
-	return record_type, nil
-}
 
 func createRecord(c *gin.Context, record any) {
 	db, exists := c.Get("db")
@@ -42,24 +25,77 @@ func createRecord(c *gin.Context, record any) {
 	c.JSON(http.StatusCreated, record)
 }
 
+func createUniqueRecord(c *gin.Context, record any, cond any) {
+	db, exists := c.Get("db")
+	if !exists {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "db connection not found in context"})
+		return
+	}
+
+	if err := db.(*gorm.DB).FirstOrCreate(record, cond).Error; err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"DB error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusCreated, record)
+}
+
 func PostSensorUnit(c *gin.Context) {
-	bindAndCreateRecord(c, &dbApi.SensorUnit{})
+	var unit dbApi.SensorUnit
+	err := c.ShouldBindJSON(&unit)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"Parsing error": err.Error()})
+		return
+	}
+
+	createUniqueRecord(c, &unit, &dbApi.SensorUnit{Code: unit.Code})
 }
 
 func PostBike(c *gin.Context) {
-	bindAndCreateRecord(c, &dbApi.Bike{})
+	var bike dbApi.Bike
+	err := c.ShouldBindJSON(&bike)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"Parsing error": err.Error()})
+		return
+	}
+
+	createUniqueRecord(c, &bike, &dbApi.Bike{Code: bike.Code})
 }
 
 func PostTrip(c *gin.Context) {
-	bindAndCreateRecord(c, &dbApi.Trip{})
+	var trip dbApi.Trip
+	err := c.ShouldBindJSON(&trip)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"Parsing error": err.Error()})
+		return
+	}
+
+	createRecord(c, &trip)
 }
 
 func PostTripData(c *gin.Context) {
-	// bindAndCreateRecord(c, &[]dbApi.DataPoint{})
-	var data []dbApi.DataPoint
-	if err := c.ShouldBindJSON(&data); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"Parsing error": err.Error()})
+	tripIdStr := c.GetHeader("Trip-ID")
+	if tripIdStr == "" {
+		c.JSON(http.StatusBadRequest, "Missing 'Trip-ID' header")
+		return
 	}
 
-	createRecord(c, data)
+	tripId, err := strconv.Atoi(tripIdStr)
+	if err != nil || tripId <= 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"Invalid trip id": tripIdStr})
+		return
+	}
+
+	var data []dbApi.DataPoint
+	err = c.ShouldBindJSON(&data)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"Parsing error": err.Error()})
+		return
+	}
+
+	for i := 0; i < len(data); i++ {
+		data[i].TripID = uint(tripId)
+	}
+
+	createRecord(c, &data)
 }

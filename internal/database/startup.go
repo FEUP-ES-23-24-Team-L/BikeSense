@@ -98,7 +98,7 @@ func OpenAndMigrateDB(config Config) *gorm.DB {
 	}
 	log.Println("[DB Startup] Database connection established")
 
-	query := fmt.Sprintf("CREATE SCHEMA %s;", schemaName)
+	query := fmt.Sprintf("CREATE SCHEMA IF NOT EXISTS %s;", schemaName)
 	if err := db.Exec(query).Error; err != nil {
 		log.Fatalf("[DB Startup] Error creating schema: %v", err)
 	}

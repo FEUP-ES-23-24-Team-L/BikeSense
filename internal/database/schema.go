@@ -3,13 +3,13 @@ package database
 import "time"
 
 type Bike struct {
-	Code string `json:"code"`
+	Code string `json:"code" gorm:"unique"`
 	trip Trip   `json:"-"`
 	ID   uint   `json:"id" gorm:"primaryKey"`
 }
 
 type SensorUnit struct {
-	Code string `json:"code"`
+	Code string `json:"code" gorm:"unique"`
 	Trip Trip   `json:"-"`
 	ID   uint   `json:"id" gorm:"primaryKey"`
 }
