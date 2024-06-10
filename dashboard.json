@@ -1,0 +1,3442 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 2,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "edmegu124g35sa"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "noise_level"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dB"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "speed"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "velocitykmh"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "altitute"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "lengthm"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "temperature"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "celsius"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "luminosity"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "lumens"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "carbon_monoxide_level"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "ppm"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "polution_particles_ppm"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "ppm"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "humidity"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 22,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "basemap": {
+          "config": {},
+          "name": "Layer 0",
+          "type": "default"
+        },
+        "controls": {
+          "mouseWheelZoom": true,
+          "showAttribution": true,
+          "showDebug": false,
+          "showMeasure": false,
+          "showScale": false,
+          "showZoom": true
+        },
+        "layers": [
+          {
+            "config": {
+              "blur": 15,
+              "radius": 5,
+              "weight": {
+                "fixed": 1,
+                "max": 1,
+                "min": 0
+              }
+            },
+            "filterData": {
+              "id": "byRefId",
+              "options": "P"
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "name": "polution_particles_heatmap",
+            "opacity": 0.4,
+            "tooltip": true,
+            "type": "heatmap"
+          },
+          {
+            "config": {
+              "arrow": 0,
+              "style": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "lineWidth": 2,
+                "opacity": 1,
+                "rotation": {
+                  "fixed": 0,
+                  "max": 360,
+                  "min": -360,
+                  "mode": "mod"
+                },
+                "size": {
+                  "fixed": 5,
+                  "max": 15,
+                  "min": 2
+                },
+                "symbol": {
+                  "fixed": "img/icons/marker/circle.svg",
+                  "mode": "fixed"
+                },
+                "symbolAlign": {
+                  "horizontal": "center",
+                  "vertical": "center"
+                },
+                "textConfig": {
+                  "fontSize": 12,
+                  "offsetX": 0,
+                  "offsetY": 0,
+                  "textAlign": "center",
+                  "textBaseline": "middle"
+                }
+              }
+            },
+            "filterData": {
+              "id": "byRefId",
+              "options": "H"
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "name": "polution route",
+            "opacity": 0.4,
+            "tooltip": true,
+            "type": "route"
+          },
+          {
+            "config": {
+              "showLegend": true,
+              "style": {
+                "color": {
+                  "field": "polution_particles_ppm",
+                  "fixed": "dark-green"
+                },
+                "opacity": 0.4,
+                "rotation": {
+                  "fixed": 0,
+                  "max": 360,
+                  "min": -360,
+                  "mode": "mod"
+                },
+                "size": {
+                  "fixed": 5,
+                  "max": 15,
+                  "min": 2
+                },
+                "symbol": {
+                  "fixed": "img/icons/marker/circle.svg",
+                  "mode": "fixed"
+                },
+                "symbolAlign": {
+                  "horizontal": "center",
+                  "vertical": "center"
+                },
+                "textConfig": {
+                  "fontSize": 12,
+                  "offsetX": 0,
+                  "offsetY": 0,
+                  "textAlign": "center",
+                  "textBaseline": "middle"
+                }
+              }
+            },
+            "filterData": {
+              "id": "byRefId",
+              "options": "H"
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "name": "polution_particles_ppm",
+            "tooltip": true,
+            "type": "markers"
+          },
+          {
+            "config": {
+              "blur": 15,
+              "radius": 5,
+              "weight": {
+                "fixed": 1,
+                "max": 1,
+                "min": 0
+              }
+            },
+            "filterData": {
+              "id": "byRefId",
+              "options": "O"
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "name": "carbon_monoxide_level_heatmap",
+            "opacity": 0.4,
+            "tooltip": true,
+            "type": "heatmap"
+          },
+          {
+            "config": {
+              "arrow": 0,
+              "style": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "lineWidth": 2,
+                "opacity": 1,
+                "rotation": {
+                  "fixed": 0,
+                  "max": 360,
+                  "min": -360,
+                  "mode": "mod"
+                },
+                "size": {
+                  "fixed": 5,
+                  "max": 15,
+                  "min": 2
+                },
+                "symbol": {
+                  "fixed": "img/icons/marker/circle.svg",
+                  "mode": "fixed"
+                },
+                "symbolAlign": {
+                  "horizontal": "center",
+                  "vertical": "center"
+                },
+                "textConfig": {
+                  "fontSize": 12,
+                  "offsetX": 0,
+                  "offsetY": 0,
+                  "textAlign": "center",
+                  "textBaseline": "middle"
+                }
+              }
+            },
+            "filterData": {
+              "id": "byRefId",
+              "options": "G"
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "name": "carbon route",
+            "opacity": 0.4,
+            "tooltip": true,
+            "type": "route"
+          },
+          {
+            "config": {
+              "showLegend": true,
+              "style": {
+                "color": {
+                  "field": "carbon_monoxide_level",
+                  "fixed": "dark-green"
+                },
+                "opacity": 0.4,
+                "rotation": {
+                  "fixed": 0,
+                  "max": 360,
+                  "min": -360,
+                  "mode": "mod"
+                },
+                "size": {
+                  "fixed": 5,
+                  "max": 15,
+                  "min": 2
+                },
+                "symbol": {
+                  "fixed": "img/icons/marker/circle.svg",
+                  "mode": "fixed"
+                },
+                "symbolAlign": {
+                  "horizontal": "center",
+                  "vertical": "center"
+                },
+                "textConfig": {
+                  "fontSize": 12,
+                  "offsetX": 0,
+                  "offsetY": 0,
+                  "textAlign": "center",
+                  "textBaseline": "middle"
+                }
+              }
+            },
+            "filterData": {
+              "id": "byRefId",
+              "options": "G"
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "name": "carbon_monoxide_level",
+            "tooltip": true,
+            "type": "markers"
+          },
+          {
+            "config": {
+              "blur": 15,
+              "radius": 5,
+              "weight": {
+                "fixed": 1,
+                "max": 1,
+                "min": 0
+              }
+            },
+            "filterData": {
+              "id": "byRefId",
+              "options": "N"
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "name": "luminosity_heatmap",
+            "opacity": 0.4,
+            "tooltip": true,
+            "type": "heatmap"
+          },
+          {
+            "config": {
+              "arrow": 0,
+              "style": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "lineWidth": 2,
+                "opacity": 1,
+                "rotation": {
+                  "fixed": 0,
+                  "max": 360,
+                  "min": -360,
+                  "mode": "mod"
+                },
+                "size": {
+                  "fixed": 5,
+                  "max": 15,
+                  "min": 2
+                },
+                "symbol": {
+                  "fixed": "img/icons/marker/circle.svg",
+                  "mode": "fixed"
+                },
+                "symbolAlign": {
+                  "horizontal": "center",
+                  "vertical": "center"
+                },
+                "textConfig": {
+                  "fontSize": 12,
+                  "offsetX": 0,
+                  "offsetY": 0,
+                  "textAlign": "center",
+                  "textBaseline": "middle"
+                }
+              }
+            },
+            "filterData": {
+              "id": "byRefId",
+              "options": "F"
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "name": "luminosity route",
+            "opacity": 0.4,
+            "tooltip": true,
+            "type": "route"
+          },
+          {
+            "config": {
+              "showLegend": true,
+              "style": {
+                "color": {
+                  "field": "luminosity",
+                  "fixed": "dark-green"
+                },
+                "opacity": 0.4,
+                "rotation": {
+                  "fixed": 0,
+                  "max": 360,
+                  "min": -360,
+                  "mode": "mod"
+                },
+                "size": {
+                  "fixed": 5,
+                  "max": 15,
+                  "min": 2
+                },
+                "symbol": {
+                  "fixed": "img/icons/marker/circle.svg",
+                  "mode": "fixed"
+                },
+                "symbolAlign": {
+                  "horizontal": "center",
+                  "vertical": "center"
+                },
+                "textConfig": {
+                  "fontSize": 12,
+                  "offsetX": 0,
+                  "offsetY": 0,
+                  "textAlign": "center",
+                  "textBaseline": "middle"
+                }
+              }
+            },
+            "filterData": {
+              "id": "byRefId",
+              "options": "F"
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "name": "Luminosity",
+            "tooltip": true,
+            "type": "markers"
+          },
+          {
+            "config": {
+              "blur": 15,
+              "radius": 5,
+              "weight": {
+                "fixed": 1,
+                "max": 1,
+                "min": 0
+              }
+            },
+            "filterData": {
+              "id": "byRefId",
+              "options": "M"
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "name": "uv_level_heatmap",
+            "opacity": 0.4,
+            "tooltip": true,
+            "type": "heatmap"
+          },
+          {
+            "config": {
+              "arrow": 0,
+              "style": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "lineWidth": 2,
+                "opacity": 1,
+                "rotation": {
+                  "fixed": 0,
+                  "max": 360,
+                  "min": -360,
+                  "mode": "mod"
+                },
+                "size": {
+                  "fixed": 5,
+                  "max": 15,
+                  "min": 2
+                },
+                "symbol": {
+                  "fixed": "img/icons/marker/circle.svg",
+                  "mode": "fixed"
+                },
+                "symbolAlign": {
+                  "horizontal": "center",
+                  "vertical": "center"
+                },
+                "textConfig": {
+                  "fontSize": 12,
+                  "offsetX": 0,
+                  "offsetY": 0,
+                  "textAlign": "center",
+                  "textBaseline": "middle"
+                }
+              }
+            },
+            "filterData": {
+              "id": "byRefId",
+              "options": "E"
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "name": "uv level route",
+            "opacity": 0.4,
+            "tooltip": true,
+            "type": "route"
+          },
+          {
+            "config": {
+              "showLegend": true,
+              "style": {
+                "color": {
+                  "field": "uv_level",
+                  "fixed": "dark-green"
+                },
+                "opacity": 0.4,
+                "rotation": {
+                  "fixed": 0,
+                  "max": 360,
+                  "min": -360,
+                  "mode": "mod"
+                },
+                "size": {
+                  "fixed": 5,
+                  "max": 15,
+                  "min": 2
+                },
+                "symbol": {
+                  "fixed": "img/icons/marker/circle.svg",
+                  "mode": "fixed"
+                },
+                "symbolAlign": {
+                  "horizontal": "center",
+                  "vertical": "center"
+                },
+                "textConfig": {
+                  "fontSize": 12,
+                  "offsetX": 0,
+                  "offsetY": 0,
+                  "textAlign": "center",
+                  "textBaseline": "middle"
+                }
+              }
+            },
+            "filterData": {
+              "id": "byRefId",
+              "options": "E"
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "name": "uv_level",
+            "tooltip": true,
+            "type": "markers"
+          },
+          {
+            "config": {
+              "blur": 15,
+              "radius": 5,
+              "weight": {
+                "fixed": 1,
+                "max": 1,
+                "min": 0
+              }
+            },
+            "filterData": {
+              "id": "byRefId",
+              "options": "L"
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "name": "humidity_heatmap",
+            "opacity": 0.4,
+            "tooltip": true,
+            "type": "heatmap"
+          },
+          {
+            "config": {
+              "arrow": 0,
+              "style": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "lineWidth": 2,
+                "opacity": 1,
+                "rotation": {
+                  "fixed": 0,
+                  "max": 360,
+                  "min": -360,
+                  "mode": "mod"
+                },
+                "size": {
+                  "fixed": 5,
+                  "max": 15,
+                  "min": 2
+                },
+                "symbol": {
+                  "fixed": "img/icons/marker/circle.svg",
+                  "mode": "fixed"
+                },
+                "symbolAlign": {
+                  "horizontal": "center",
+                  "vertical": "center"
+                },
+                "textConfig": {
+                  "fontSize": 12,
+                  "offsetX": 0,
+                  "offsetY": 0,
+                  "textAlign": "center",
+                  "textBaseline": "middle"
+                }
+              }
+            },
+            "filterData": {
+              "id": "byRefId",
+              "options": "D"
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "name": "humidity route",
+            "opacity": 0.4,
+            "tooltip": true,
+            "type": "route"
+          },
+          {
+            "config": {
+              "showLegend": true,
+              "style": {
+                "color": {
+                  "field": "humidity",
+                  "fixed": "dark-green"
+                },
+                "opacity": 0.4,
+                "rotation": {
+                  "fixed": 0,
+                  "max": 360,
+                  "min": -360,
+                  "mode": "mod"
+                },
+                "size": {
+                  "fixed": 5,
+                  "max": 15,
+                  "min": 2
+                },
+                "symbol": {
+                  "fixed": "img/icons/marker/circle.svg",
+                  "mode": "fixed"
+                },
+                "symbolAlign": {
+                  "horizontal": "center",
+                  "vertical": "center"
+                },
+                "textConfig": {
+                  "fontSize": 12,
+                  "offsetX": 0,
+                  "offsetY": 0,
+                  "textAlign": "center",
+                  "textBaseline": "middle"
+                }
+              }
+            },
+            "filterData": {
+              "id": "byRefId",
+              "options": "D"
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "name": "Humidity",
+            "tooltip": true,
+            "type": "markers"
+          },
+          {
+            "config": {
+              "blur": 15,
+              "radius": 5,
+              "weight": {
+                "fixed": 1,
+                "max": 1,
+                "min": 0
+              }
+            },
+            "filterData": {
+              "id": "byRefId",
+              "options": "K"
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "name": "temperature_heatmap",
+            "opacity": 0.4,
+            "tooltip": true,
+            "type": "heatmap"
+          },
+          {
+            "config": {
+              "arrow": 0,
+              "style": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "lineWidth": 2,
+                "opacity": 1,
+                "rotation": {
+                  "fixed": 0,
+                  "max": 360,
+                  "min": -360,
+                  "mode": "mod"
+                },
+                "size": {
+                  "fixed": 5,
+                  "max": 15,
+                  "min": 2
+                },
+                "symbol": {
+                  "fixed": "img/icons/marker/circle.svg",
+                  "mode": "fixed"
+                },
+                "symbolAlign": {
+                  "horizontal": "center",
+                  "vertical": "center"
+                },
+                "textConfig": {
+                  "fontSize": 12,
+                  "offsetX": 0,
+                  "offsetY": 0,
+                  "textAlign": "center",
+                  "textBaseline": "middle"
+                }
+              }
+            },
+            "filterData": {
+              "id": "byRefId",
+              "options": "C"
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "name": "temperature route",
+            "opacity": 0.4,
+            "tooltip": true,
+            "type": "route"
+          },
+          {
+            "config": {
+              "showLegend": true,
+              "style": {
+                "color": {
+                  "field": "temperature",
+                  "fixed": "dark-green"
+                },
+                "opacity": 0.5,
+                "rotation": {
+                  "fixed": 0,
+                  "max": 360,
+                  "min": -360,
+                  "mode": "mod"
+                },
+                "size": {
+                  "fixed": 5,
+                  "max": 15,
+                  "min": 2
+                },
+                "symbol": {
+                  "fixed": "img/icons/marker/circle.svg",
+                  "mode": "fixed"
+                },
+                "symbolAlign": {
+                  "horizontal": "center",
+                  "vertical": "center"
+                },
+                "textConfig": {
+                  "fontSize": 12,
+                  "offsetX": 0,
+                  "offsetY": 0,
+                  "textAlign": "center",
+                  "textBaseline": "middle"
+                }
+              }
+            },
+            "filterData": {
+              "id": "byRefId",
+              "options": "C"
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "name": "Temperature",
+            "tooltip": true,
+            "type": "markers"
+          },
+          {
+            "config": {
+              "blur": 15,
+              "radius": 5,
+              "weight": {
+                "fixed": 1,
+                "max": 1,
+                "min": 0
+              }
+            },
+            "filterData": {
+              "id": "byRefId",
+              "options": "J"
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "name": "noise_level_heatmap",
+            "opacity": 0.4,
+            "tooltip": true,
+            "type": "heatmap"
+          },
+          {
+            "config": {
+              "arrow": 0,
+              "style": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "lineWidth": 2,
+                "opacity": 1,
+                "rotation": {
+                  "fixed": 0,
+                  "max": 360,
+                  "min": -360,
+                  "mode": "mod"
+                },
+                "size": {
+                  "fixed": 5,
+                  "max": 15,
+                  "min": 2
+                },
+                "symbol": {
+                  "fixed": "img/icons/marker/circle.svg",
+                  "mode": "fixed"
+                },
+                "symbolAlign": {
+                  "horizontal": "center",
+                  "vertical": "center"
+                },
+                "textConfig": {
+                  "fontSize": 12,
+                  "offsetX": 0,
+                  "offsetY": 0,
+                  "textAlign": "center",
+                  "textBaseline": "middle"
+                }
+              }
+            },
+            "filterData": {
+              "id": "byRefId",
+              "options": "B"
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "name": "noise level route",
+            "opacity": 0.4,
+            "tooltip": true,
+            "type": "route"
+          },
+          {
+            "config": {
+              "showLegend": true,
+              "style": {
+                "color": {
+                  "field": "noise_level",
+                  "fixed": "dark-green"
+                },
+                "opacity": 0.4,
+                "rotation": {
+                  "fixed": 0,
+                  "max": 360,
+                  "min": -360,
+                  "mode": "mod"
+                },
+                "size": {
+                  "fixed": 5,
+                  "max": 15,
+                  "min": 2
+                },
+                "symbol": {
+                  "fixed": "img/icons/marker/circle.svg",
+                  "mode": "fixed"
+                },
+                "symbolAlign": {
+                  "horizontal": "center",
+                  "vertical": "center"
+                },
+                "textConfig": {
+                  "fontSize": 12,
+                  "offsetX": 0,
+                  "offsetY": 0,
+                  "textAlign": "center",
+                  "textBaseline": "middle"
+                }
+              }
+            },
+            "filterData": {
+              "id": "byRefId",
+              "options": "B"
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "name": "noise_level",
+            "tooltip": true,
+            "type": "markers"
+          },
+          {
+            "config": {
+              "blur": 15,
+              "radius": 5,
+              "weight": {
+                "fixed": 1,
+                "max": 1,
+                "min": 0
+              }
+            },
+            "filterData": {
+              "id": "byRefId",
+              "options": "I"
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "name": "all_data_heatmap",
+            "opacity": 0.4,
+            "tooltip": true,
+            "type": "heatmap"
+          },
+          {
+            "config": {
+              "arrow": 0,
+              "style": {
+                "color": {
+                  "fixed": "green"
+                },
+                "lineWidth": 2,
+                "opacity": 1,
+                "rotation": {
+                  "fixed": 0,
+                  "max": 360,
+                  "min": -360,
+                  "mode": "mod"
+                },
+                "size": {
+                  "fixed": 5,
+                  "max": 15,
+                  "min": 2
+                },
+                "symbol": {
+                  "fixed": "img/icons/marker/circle.svg",
+                  "mode": "fixed"
+                },
+                "symbolAlign": {
+                  "horizontal": "center",
+                  "vertical": "center"
+                },
+                "textConfig": {
+                  "fontSize": 12,
+                  "offsetX": 0,
+                  "offsetY": 0,
+                  "textAlign": "center",
+                  "textBaseline": "middle"
+                }
+              }
+            },
+            "filterData": {
+              "id": "byRefId",
+              "options": "A"
+            },
+            "location": {
+              "mode": "auto"
+            },
+            "name": "Data points route",
+            "opacity": 0.4,
+            "tooltip": true,
+            "type": "route"
+          },
+          {
+            "config": {
+              "showLegend": true,
+              "style": {
+                "color": {
+                  "fixed": "green"
+                },
+                "opacity": 0.4,
+                "rotation": {
+                  "fixed": 0,
+                  "max": 360,
+                  "min": -360,
+                  "mode": "mod"
+                },
+                "size": {
+                  "fixed": 5,
+                  "max": 15,
+                  "min": 2
+                },
+                "symbol": {
+                  "fixed": "img/icons/marker/circle.svg",
+                  "mode": "fixed"
+                },
+                "symbolAlign": {
+                  "horizontal": "center",
+                  "vertical": "center"
+                },
+                "textConfig": {
+                  "fontSize": 12,
+                  "offsetX": 0,
+                  "offsetY": 0,
+                  "textAlign": "center",
+                  "textBaseline": "middle"
+                }
+              }
+            },
+            "filterData": {
+              "id": "byRefId",
+              "options": "A"
+            },
+            "name": "All_data",
+            "tooltip": true,
+            "type": "markers"
+          },
+          {
+            "config": {},
+            "location": {
+              "mode": "auto"
+            },
+            "name": "Layer 3",
+            "opacity": 0.4,
+            "tooltip": true,
+            "type": "osm-standard"
+          }
+        ],
+        "tooltip": {
+          "mode": "details"
+        },
+        "view": {
+          "allLayers": true,
+          "id": "coords",
+          "lat": 41.178357,
+          "lon": -8.593684,
+          "zoom": 16.12
+        }
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "-- Selecionando colunas específicas da tabela dev.data_points\r\nSELECT \r\n  \"timestamp\" ,\r\n  latitude,\r\n  longitude,\r\n  speed ,\r\n  course,\r\n  altitute ,\r\n  satellites_in_use,\r\n  fix_type,\r\n  hdop,\r\n  vdop,\r\n  pdop,\r\n  id,\r\n  trip_id,\r\n  noise_level ,\r\n  temperature ,\r\n  humidity ,\r\n  uv_level,\r\n  luminosity ,\r\n  carbon_monoxide_level ,\r\n  polution_particles_ppm \r\nFROM \r\n  dev.data_points \r\nWHERE \r\n   trip_id IN ($trip_id)\r\n   AND (noise_level > $min_noise_level AND noise_level < $max_noise_level )\r\n   AND (temperature > $min_pretended_temperature  AND temperature < $max_pretended_temperature )\r\n   AND (humidity > $min_humidity AND humidity < $max_humidity)\r\n   AND (uv_level>$min_uv_level AND uv_level< $max_uv_level )\r\n   AND (luminosity>$min_luminosity  AND luminosity<$max_luminosity)\r\n   AND (carbon_monoxide_level>=$min_carbon_monoxide_level AND carbon_monoxide_level<=$max_carbon_monoxide_level )\r\n   AND (polution_particles_ppm>=$min_polution_particles_pmm AND polution_particles_ppm<=$max_polution_particles_pmm )\r\n   AND ('$Chosen_visualization' = 'all_data')\r\n   AND('$display'='marker')\r\n   AND DATE(\"timestamp\") IN (${Day})\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "-- Selecionando colunas específicas da tabela dev.data_points\r\nSELECT \r\n  \"timestamp\",\r\n  latitude,\r\n  longitude,\r\n  noise_level \r\n  \r\n\r\nFROM \r\n  dev.data_points \r\nWHERE \r\n   trip_id IN ($trip_id)\r\n   AND (noise_level > $min_noise_level AND noise_level < $max_noise_level )\r\n   AND (temperature > $min_pretended_temperature  AND temperature < $max_pretended_temperature )\r\n   AND (humidity > $min_humidity AND humidity < $max_humidity)\r\n   AND (uv_level>$min_uv_level AND uv_level< $max_uv_level )\r\n   AND (luminosity>$min_luminosity  AND luminosity<$max_luminosity)\r\n   AND (carbon_monoxide_level>=$min_carbon_monoxide_level AND carbon_monoxide_level<=$max_carbon_monoxide_level )\r\n   AND (polution_particles_ppm>=$min_polution_particles_pmm AND polution_particles_ppm<=$max_polution_particles_pmm )\r\n   AND ('$Chosen_visualization' = 'noise_level') \r\n   AND('$display'='marker')\r\n   AND DATE(\"timestamp\") IN (${Day})\r\n   ",
+          "refId": "B",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "-- Selecionando colunas específicas da tabela dev.data_points\r\nSELECT \r\n  \"timestamp\",\r\n  latitude,\r\n  longitude,\r\n  temperature \r\n\r\nFROM \r\n  dev.data_points \r\nWHERE \r\n   trip_id IN ($trip_id)\r\n   AND (noise_level > $min_noise_level AND noise_level < $max_noise_level )\r\n   AND (temperature > $min_pretended_temperature  AND temperature < $max_pretended_temperature )\r\n   AND (humidity > $min_humidity AND humidity < $max_humidity)\r\n   AND (uv_level>$min_uv_level AND uv_level< $max_uv_level )\r\n   AND (luminosity>$min_luminosity  AND luminosity<$max_luminosity)\r\n   AND (carbon_monoxide_level>=$min_carbon_monoxide_level AND carbon_monoxide_level<=$max_carbon_monoxide_level )\r\n   AND (polution_particles_ppm>=$min_polution_particles_pmm AND polution_particles_ppm<=$max_polution_particles_pmm )\r\n   AND ('$Chosen_visualization' = 'temperature')\r\n   AND('$display'='marker')\r\n   AND DATE(\"timestamp\") IN (${Day})\r\n",
+          "refId": "C",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "-- Selecionando colunas específicas da tabela dev.data_points\r\nSELECT \r\n  \"timestamp\",\r\n  latitude,\r\n  longitude,\r\n  humidity \r\n\r\nFROM \r\n  dev.data_points \r\nWHERE \r\n   trip_id IN ($trip_id)\r\n   AND (noise_level > $min_noise_level AND noise_level < $max_noise_level )\r\n   AND (temperature > $min_pretended_temperature  AND temperature < $max_pretended_temperature )\r\n   AND (humidity > $min_humidity AND humidity < $max_humidity)\r\n   AND (uv_level>$min_uv_level AND uv_level< $max_uv_level )\r\n   AND (luminosity>$min_luminosity  AND luminosity<$max_luminosity)\r\n   AND (carbon_monoxide_level>=$min_carbon_monoxide_level AND carbon_monoxide_level<=$max_carbon_monoxide_level )\r\n   AND (polution_particles_ppm>=$min_polution_particles_pmm AND polution_particles_ppm<=$max_polution_particles_pmm )\r\n   AND ('$Chosen_visualization' = 'humidity')\r\n   AND('$display'='marker')\r\n   AND DATE(\"timestamp\") IN (${Day})\r\n",
+          "refId": "D",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "-- Selecionando colunas específicas da tabela dev.data_points\r\nSELECT \r\n  \"timestamp\",\r\n  latitude,\r\n  longitude,\r\n  uv_level\r\n\r\nFROM \r\n  dev.data_points \r\nWHERE \r\n   trip_id IN ($trip_id)\r\n   AND (noise_level > $min_noise_level AND noise_level < $max_noise_level )\r\n   AND (temperature > $min_pretended_temperature  AND temperature < $max_pretended_temperature )\r\n   AND (humidity > $min_humidity AND humidity < $max_humidity)\r\n   AND (uv_level>$min_uv_level AND uv_level< $max_uv_level )\r\n   AND (luminosity>$min_luminosity  AND luminosity<$max_luminosity)\r\n   AND (carbon_monoxide_level>=$min_carbon_monoxide_level AND carbon_monoxide_level<=$max_carbon_monoxide_level )\r\n   AND (polution_particles_ppm>=$min_polution_particles_pmm AND polution_particles_ppm<=$max_polution_particles_pmm )\r\n   AND ('$Chosen_visualization' = 'uv_level')\r\n   AND('$display'='marker')\r\n   AND DATE(\"timestamp\") IN (${Day})\r\n",
+          "refId": "E",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "-- Selecionando colunas específicas da tabela dev.data_points\r\nSELECT \r\n  \"timestamp\",\r\n  latitude,\r\n  longitude,\r\n  luminosity \r\n\r\nFROM \r\n  dev.data_points \r\nWHERE \r\n   trip_id IN ($trip_id)\r\n   AND (noise_level > $min_noise_level AND noise_level < $max_noise_level )\r\n   AND (temperature > $min_pretended_temperature  AND temperature < $max_pretended_temperature )\r\n   AND (humidity > $min_humidity AND humidity < $max_humidity)\r\n   AND (uv_level>$min_uv_level AND uv_level< $max_uv_level )\r\n   AND (luminosity>$min_luminosity  AND luminosity<$max_luminosity)\r\n   AND (carbon_monoxide_level>=$min_carbon_monoxide_level AND carbon_monoxide_level<=$max_carbon_monoxide_level )\r\n   AND (polution_particles_ppm>=$min_polution_particles_pmm AND polution_particles_ppm<=max_polution_particles_pmm )\r\n   AND ('$Chosen_visualization' = 'luminosity')\r\n   AND('$display'='marker')\r\n   AND DATE(\"timestamp\") IN (${Day})",
+          "refId": "F",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "-- Selecionando colunas específicas da tabela dev.data_points\r\nSELECT \r\n  \"timestamp\",\r\n  latitude,\r\n  longitude,\r\n  carbon_monoxide_level \r\n\r\nFROM \r\n  dev.data_points \r\nWHERE \r\n   trip_id IN ($trip_id)\r\n   AND (noise_level > $min_noise_level AND noise_level < $max_noise_level )\r\n   AND (temperature > $min_pretended_temperature  AND temperature < $max_pretended_temperature )\r\n   AND (humidity > $min_humidity AND humidity < $max_humidity)\r\n   AND (uv_level>$min_uv_level AND uv_level< $max_uv_level )\r\n   AND (luminosity>$min_luminosity  AND luminosity<$max_luminosity)\r\n   AND (carbon_monoxide_level>=$min_carbon_monoxide_level AND carbon_monoxide_level<=$max_carbon_monoxide_level )\r\n   AND (polution_particles_ppm>=$min_polution_particles_pmm AND polution_particles_ppm<=$max_polution_particles_pmm )\r\n   AND ('$Chosen_visualization' = 'carbon_monoxide_level')\r\n   AND('$display'='marker')\r\n   AND DATE(\"timestamp\") IN (${Day})\r\n",
+          "refId": "G",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "-- Selecionando colunas específicas da tabela dev.data_points\r\nSELECT \r\n  \"timestamp\",\r\n  latitude,\r\n  longitude,\r\n  polution_particles_ppm \r\n\r\nFROM \r\n  dev.data_points \r\nWHERE \r\n   trip_id IN ($trip_id)\r\n   AND (noise_level > $min_noise_level AND noise_level < $max_noise_level )\r\n   AND (temperature > $min_pretended_temperature  AND temperature < $max_pretended_temperature )\r\n   AND (humidity > $min_humidity AND humidity < $max_humidity)\r\n   AND (uv_level>$min_uv_level AND uv_level< $max_uv_level )\r\n   AND (luminosity>$min_luminosity  AND luminosity<$max_luminosity)\r\n   AND (carbon_monoxide_level>=$min_carbon_monoxide_level AND carbon_monoxide_level<=$max_carbon_monoxide_level )\r\n   AND (polution_particles_ppm>=$min_polution_particles_pmm AND polution_particles_ppm<=$max_polution_particles_pmm )\r\n   AND ('$Chosen_visualization' = 'polution_particles_ppm')\r\n   AND('$display'='marker')\r\n   AND DATE(\"timestamp\") IN (${Day})\r\n",
+          "refId": "H",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "-- Selecionando colunas específicas da tabela dev.data_points\r\nSELECT \r\n  \"timestamp\" ,\r\n  latitude,\r\n  longitude,\r\n  speed ,\r\n  course,\r\n  altitute,\r\n  satellites_in_use,\r\n  fix_type,\r\n  hdop,\r\n  vdop,\r\n  pdop,\r\n  id,\r\n  trip_id,\r\n  noise_level ,\r\n  temperature ,\r\n  humidity ,\r\n  uv_level,\r\n  luminosity ,\r\n  carbon_monoxide_level ,\r\n  polution_particles_ppm \r\nFROM \r\n  dev.data_points \r\nWHERE \r\n   trip_id IN ($trip_id)\r\n   AND (noise_level > $min_noise_level AND noise_level < $max_noise_level )\r\n   AND (temperature > $min_pretended_temperature  AND temperature < $max_pretended_temperature )\r\n   AND (humidity > $min_humidity AND humidity < $max_humidity)\r\n   AND (uv_level>$min_uv_level AND uv_level< $max_uv_level )\r\n   AND (luminosity>$min_luminosity  AND luminosity<$max_luminosity)\r\n   AND (carbon_monoxide_level>=$min_carbon_monoxide_level AND carbon_monoxide_level<=$max_carbon_monoxide_level )\r\n   AND (polution_particles_ppm>=$min_polution_particles_pmm AND polution_particles_ppm<=$max_polution_particles_pmm )\r\n   AND ('$Chosen_visualization' = 'all_data')\r\n   AND('$display'='heatmap')\r\n   AND DATE(\"timestamp\") IN (${Day})\r\n",
+          "refId": "I",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "-- Selecionando colunas específicas da tabela dev.data_points\r\nSELECT \r\n  \"timestamp\",\r\n  latitude,\r\n  longitude,\r\n  noise_level \r\n\r\nFROM \r\n  dev.data_points \r\nWHERE \r\n   trip_id IN ($trip_id)\r\n   AND (noise_level > $min_noise_level AND noise_level < $max_noise_level )\r\n   AND (temperature > $min_pretended_temperature  AND temperature < $max_pretended_temperature )\r\n   AND (humidity > $min_humidity AND humidity < $max_humidity)\r\n   AND (uv_level>$min_uv_level AND uv_level< $max_uv_level )\r\n   AND (luminosity>$min_luminosity  AND luminosity<$max_luminosity)\r\n   AND (carbon_monoxide_level>=$min_carbon_monoxide_level AND carbon_monoxide_level<=$max_carbon_monoxide_level )\r\n   AND (polution_particles_ppm>=$min_polution_particles_pmm AND polution_particles_ppm<=$max_polution_particles_pmm )\r\n   AND ('$Chosen_visualization' = 'noise_level') \r\n   AND('$display'='heatmap')\r\n   AND DATE(\"timestamp\") IN (${Day})",
+          "refId": "J",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "-- Selecionando colunas específicas da tabela dev.data_points\r\nSELECT \r\n  \"timestamp\",\r\n  latitude,\r\n  longitude,\r\n  temperature \r\n\r\nFROM \r\n  dev.data_points \r\nWHERE \r\n   trip_id IN ($trip_id)\r\n   AND (noise_level > $min_noise_level AND noise_level < $max_noise_level )\r\n   AND (temperature > $min_pretended_temperature  AND temperature < $max_pretended_temperature )\r\n   AND (humidity > $min_humidity AND humidity < $max_humidity)\r\n   AND (uv_level>$min_uv_level AND uv_level< $max_uv_level )\r\n   AND (luminosity>$min_luminosity  AND luminosity<$max_luminosity)\r\n   AND (carbon_monoxide_level>=$min_carbon_monoxide_level AND carbon_monoxide_level<=$max_carbon_monoxide_level )\r\n   AND (polution_particles_ppm>=$min_polution_particles_pmm AND polution_particles_ppm<=$max_polution_particles_pmm )\r\n   AND ('$Chosen_visualization' = 'temperature')\r\n   AND('$display'='heatmap')\r\n   AND DATE(\"timestamp\") IN (${Day})\r\n",
+          "refId": "K",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "-- Selecionando colunas específicas da tabela dev.data_points\r\nSELECT \r\n  \"timestamp\",\r\n  latitude,\r\n  longitude,\r\n  humidity \r\n\r\nFROM \r\n  dev.data_points \r\nWHERE \r\n   trip_id IN ($trip_id)\r\n   AND (noise_level > $min_noise_level AND noise_level < $max_noise_level )\r\n   AND (temperature > $min_pretended_temperature  AND temperature < $max_pretended_temperature )\r\n   AND (humidity > $min_humidity AND humidity < $max_humidity)\r\n   AND (uv_level>$min_uv_level AND uv_level< $max_uv_level )\r\n   AND (luminosity>$min_luminosity  AND luminosity<$max_luminosity)\r\n   AND (carbon_monoxide_level>=$min_carbon_monoxide_level AND carbon_monoxide_level<=$max_carbon_monoxide_level )\r\n   AND (polution_particles_ppm>=$min_polution_particles_pmm AND polution_particles_ppm<=$max_polution_particles_pmm )\r\n   AND ('$Chosen_visualization' = 'humidity')\r\n   AND('$display'='heatmap')\r\n   AND DATE(\"timestamp\") IN (${Day})\r\n",
+          "refId": "L",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "-- Selecionando colunas específicas da tabela dev.data_points\r\nSELECT \r\n  \"timestamp\",\r\n  latitude,\r\n  longitude,\r\n  uv_level\r\n\r\nFROM \r\n  dev.data_points \r\nWHERE \r\n   trip_id IN ($trip_id)\r\n   AND (noise_level > $min_noise_level AND noise_level < $max_noise_level )\r\n   AND (temperature > $min_pretended_temperature  AND temperature < $max_pretended_temperature )\r\n   AND (humidity > $min_humidity AND humidity < $max_humidity)\r\n   AND (uv_level>$min_uv_level AND uv_level< $max_uv_level )\r\n   AND (luminosity>$min_luminosity  AND luminosity<$max_luminosity)\r\n   AND (carbon_monoxide_level>=$min_carbon_monoxide_level AND carbon_monoxide_level<=$max_carbon_monoxide_level )\r\n   AND (polution_particles_ppm>=$min_polution_particles_pmm AND polution_particles_ppm<=$max_polution_particles_pmm )\r\n   AND ('$Chosen_visualization' = 'uv_level')\r\n   AND('$display'='heatmap')\r\n   AND DATE(\"timestamp\") IN (${Day})\r\n",
+          "refId": "M",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "-- Selecionando colunas específicas da tabela dev.data_points\r\nSELECT \r\n  \"timestamp\",\r\n  latitude,\r\n  longitude,\r\n  luminosity \r\n\r\nFROM \r\n  dev.data_points \r\nWHERE \r\n   trip_id IN ($trip_id)\r\n   AND (noise_level > $min_noise_level AND noise_level < $max_noise_level )\r\n   AND (temperature > $min_pretended_temperature  AND temperature < $max_pretended_temperature )\r\n   AND (humidity > $min_humidity AND humidity < $max_humidity)\r\n   AND (uv_level>$min_uv_level AND uv_level< $max_uv_level )\r\n   AND (luminosity>$min_luminosity  AND luminosity<$max_luminosity)\r\n   AND (carbon_monoxide_level>=$min_carbon_monoxide_level AND carbon_monoxide_level<=$max_carbon_monoxide_level )\r\n   AND (polution_particles_ppm>=$min_polution_particles_pmm AND polution_particles_ppm<=$max_polution_particles_pmm )\r\n   AND ('$Chosen_visualization' = 'luminosity')\r\n   AND('$display'='heatmap')\r\n   AND DATE(\"timestamp\") IN (${Day})\r\n",
+          "refId": "N",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "-- Selecionando colunas específicas da tabela dev.data_points\r\nSELECT \r\n  \"timestamp\",\r\n  latitude,\r\n  longitude,\r\n  carbon_monoxide_level \r\n\r\nFROM \r\n  dev.data_points \r\nWHERE \r\n   trip_id IN ($trip_id)\r\n   AND (noise_level > $min_noise_level AND noise_level < $max_noise_level )\r\n   AND (temperature > $min_pretended_temperature  AND temperature < $max_pretended_temperature )\r\n   AND (humidity > $min_humidity AND humidity < $max_humidity)\r\n   AND (uv_level>$min_uv_level AND uv_level< $max_uv_level )\r\n   AND (luminosity>$min_luminosity  AND luminosity<$max_luminosity)\r\n   AND (carbon_monoxide_level>=$min_carbon_monoxide_level AND carbon_monoxide_level<=$max_carbon_monoxide_level )\r\n   AND (polution_particles_ppm>=$min_polution_particles_pmm AND polution_particles_ppm<=$max_polution_particles_pmm )\r\n   AND ('$Chosen_visualization' = 'carbon_monoxide_level')\r\n   AND('$display'='heatmap')\r\n   AND DATE(\"timestamp\") IN (${Day})",
+          "refId": "O",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "-- Selecionando colunas específicas da tabela dev.data_points\r\nSELECT \r\n  \"timestamp\",\r\n  latitude,\r\n  longitude,\r\n  polution_particles_ppm \r\n\r\nFROM \r\n  dev.data_points \r\nWHERE \r\n   trip_id IN ($trip_id)\r\n   AND (noise_level > $min_noise_level AND noise_level < $max_noise_level )\r\n   AND (temperature > $min_pretended_temperature  AND temperature < $max_pretended_temperature )\r\n   AND (humidity > $min_humidity AND humidity < $max_humidity)\r\n   AND (uv_level>$min_uv_level AND uv_level< $max_uv_level )\r\n   AND (luminosity>$min_luminosity  AND luminosity<$max_luminosity)\r\n   AND (carbon_monoxide_level>=$min_carbon_monoxide_level AND carbon_monoxide_level<=$max_carbon_monoxide_level )\r\n   AND (polution_particles_ppm>=$min_polution_particles_pmm AND polution_particles_ppm<=$max_polution_particles_pmm )\r\n   AND ('$Chosen_visualization' = 'polution_particles_ppm')\r\n   AND('$display'='heatmap')\r\n   AND DATE(\"timestamp\") IN (${Day})",
+          "refId": "P",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Map Visualization",
+      "type": "geomap"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 22
+      },
+      "id": 3,
+      "panels": [],
+      "title": "Data by the selected trip_id",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "edmegu124g35sa"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-yellow",
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "velocitykmh"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 0,
+        "y": 23
+      },
+      "id": 10,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "-- Selecionando colunas específicas da tabela dev.data_points\r\nSELECT \r\n  min(speed) as Minimum,\r\n  avg(speed) as Average,\r\n  max(speed) as Maximum\r\nFROM \r\n  dev.data_points \r\nWHERE \r\n   trip_id IN ($trip_id)\r\nLIMIT 2000;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Ciclist_velocity",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "edmegu124g35sa"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-yellow",
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "dB"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 6,
+        "y": 23
+      },
+      "id": 2,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "-- Selecionando colunas específicas da tabela dev.data_points\r\nSELECT \r\n  min(noise_level) as Minimum,\r\n  avg(noise_level) as Average,\r\n  max(noise_level) as Maximum\r\nFROM \r\n  dev.data_points \r\nWHERE \r\n   trip_id IN ($trip_id)\r\nLIMIT 2000;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Noise_level",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "edmegu124g35sa"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-yellow",
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "celsius"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 12,
+        "y": 23
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "-- Selecionando colunas específicas da tabela dev.data_points\r\nSELECT \r\n  min(temperature) as Minimum,\r\n  avg(temperature) as Average,\r\n  max(temperature) as Maximum\r\nFROM \r\n  dev.data_points \r\nWHERE \r\n  trip_id IN ($trip_id)\r\nLIMIT 2000;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Temperature",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "edmegu124g35sa"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-yellow",
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 18,
+        "y": 23
+      },
+      "id": 5,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "-- Selecionando colunas específicas da tabela dev.data_points\r\nSELECT \r\n  min(humidity) as Minimum,\r\n  avg(humidity) as Average,\r\n  max(humidity) as Maximum\r\nFROM \r\n  dev.data_points \r\nWHERE \r\n  trip_id IN ($trip_id)\r\nLIMIT 2000;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "humidity",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "edmegu124g35sa"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-yellow",
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 0,
+        "y": 27
+      },
+      "id": 7,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "-- Selecionando colunas específicas da tabela dev.data_points\r\nSELECT \r\n  min(uv_level) as Minimum,\r\n  avg(uv_level) as Average,\r\n  max(uv_level) as Maximum\r\nFROM \r\n  dev.data_points \r\nWHERE \r\n  trip_id IN ($trip_id)\r\nLIMIT 2000;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "uv_level",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "edmegu124g35sa"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-yellow",
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "lumens"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 6,
+        "y": 27
+      },
+      "id": 6,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "-- Selecionando colunas específicas da tabela dev.data_points\r\nSELECT \r\n  min(luminosity) as Minimum,\r\n  avg(luminosity) as Average,\r\n  max(luminosity) as Maximum\r\nFROM \r\n  dev.data_points \r\nWHERE \r\n  trip_id IN ($trip_id)\r\nLIMIT 2000;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "luminosity",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "edmegu124g35sa"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-yellow",
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 12,
+        "y": 27
+      },
+      "id": 8,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "-- Selecionando colunas específicas da tabela dev.data_points\r\nSELECT \r\n  min(luminosity) as Minimum,\r\n  avg(luminosity) as Average,\r\n  max(luminosity) as Maximum\r\nFROM \r\n  dev.data_points \r\nWHERE \r\n  trip_id IN ($trip_id)\r\nLIMIT 2000;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "carbon_monoxide_level",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "edmegu124g35sa"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-yellow",
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 18,
+        "y": 27
+      },
+      "id": 9,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "-- Selecionando colunas específicas da tabela dev.data_points\r\nSELECT \r\n  min(polution_particles_ppm) as Minimum,\r\n  avg(polution_particles_ppm) as Average,\r\n  max(polution_particles_ppm) as Maximum\r\nFROM \r\n  dev.data_points \r\nWHERE \r\n  trip_id IN ($trip_id)\r\nLIMIT 2000;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "polution_particles_ppm",
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 31
+      },
+      "id": 11,
+      "panels": [],
+      "title": "Data by the selected day",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "edmegu124g35sa"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-yellow",
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "velocitykmh"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 0,
+        "y": 32
+      },
+      "id": 14,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n  min(speed) as Minimum,\r\n  avg(speed) as Average,\r\n  max(speed) as Maximum\r\nFROM \r\n  dev.data_points \r\nWHERE \r\n  DATE(\"timestamp\") in (${Day});",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Ciclist_velocity",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "edmegu124g35sa"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-yellow",
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "dB"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 6,
+        "y": 32
+      },
+      "id": 15,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "-- Selecionando colunas específicas da tabela dev.data_points\r\nSELECT \r\n  min(noise_level) as Minimum,\r\n  avg(noise_level) as Average,\r\n  max(noise_level) as Maximum\r\nFROM \r\n  dev.data_points \r\nWHERE \r\n  DATE(\"timestamp\") in (${Day});; \r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Noise_level",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "edmegu124g35sa"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-yellow",
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "celsius"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 12,
+        "y": 32
+      },
+      "id": 16,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "-- Selecionando colunas específicas da tabela dev.data_points\r\nSELECT \r\n  min(temperature) as Minimum,\r\n  avg(temperature) as Average,\r\n  max(temperature) as Maximum\r\nFROM \r\n  dev.data_points \r\nWHERE \r\n  DATE(\"timestamp\") in (${Day});\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Temperature",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "edmegu124g35sa"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-yellow",
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 18,
+        "y": 32
+      },
+      "id": 17,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "-- Selecionando colunas específicas da tabela dev.data_points\r\nSELECT\r\n  min(humidity) as Minimum, \r\n  avg(humidity) as Average,\r\n  max(humidity) as Maximum\r\nFROM \r\n  dev.data_points \r\nWHERE \r\n    DATE(\"timestamp\") in (${Day});",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "humidity",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "edmegu124g35sa"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-yellow",
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 0,
+        "y": 36
+      },
+      "id": 18,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "-- Selecionando colunas específicas da tabela dev.data_points\r\nSELECT \r\n  min(uv_level) as Minimum,\r\n  avg(uv_level) as Average,\r\n  max(uv_level) as Maximum\r\nFROM \r\n  dev.data_points \r\nWHERE \r\n  DATE(\"timestamp\") in (${Day});",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "uv_level",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "edmegu124g35sa"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-yellow",
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          },
+          "unit": "lumens"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 6,
+        "y": 36
+      },
+      "id": 19,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "-- Selecionando colunas específicas da tabela dev.data_points\r\nSELECT \r\n  min(luminosity) as Minimum,\r\n  avg(luminosity) as Average,\r\n  max(luminosity) as Maximum\r\nFROM \r\n  dev.data_points \r\nWHERE \r\n  DATE(\"timestamp\") in (${Day});",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "luminosity",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "edmegu124g35sa"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-yellow",
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 12,
+        "y": 36
+      },
+      "id": 20,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "-- Selecionando colunas específicas da tabela dev.data_points\r\nSELECT \r\n  min(luminosity) as Minimum,\r\n  avg(luminosity) as Average,\r\n  max(luminosity) as Maximum\r\nFROM \r\n  dev.data_points \r\nWHERE \r\n  DATE(\"timestamp\") in (${Day});",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "carbon_monoxide_level",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "edmegu124g35sa"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "dark-yellow",
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 18,
+        "y": 36
+      },
+      "id": 13,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "edmegu124g35sa"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n  MIN(polution_particles_ppm) AS Minimum,\r\n  AVG(polution_particles_ppm) AS Average,\r\n  MAX(polution_particles_ppm) AS Maximum\r\nFROM \r\n  dev.data_points \r\nWHERE \r\n  DATE(\"timestamp\") in (${Day}); ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "polution_particles_ppm",
+      "type": "stat"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": true,
+          "text": "uv_level",
+          "value": "uv_level"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "Chosen_visualization",
+        "options": [
+          {
+            "selected": false,
+            "text": "all_data",
+            "value": "all_data"
+          },
+          {
+            "selected": false,
+            "text": "noise_level",
+            "value": "noise_level"
+          },
+          {
+            "selected": false,
+            "text": "temperature",
+            "value": "temperature"
+          },
+          {
+            "selected": false,
+            "text": "humidity",
+            "value": "humidity"
+          },
+          {
+            "selected": true,
+            "text": "uv_level",
+            "value": "uv_level"
+          },
+          {
+            "selected": false,
+            "text": "luminosity",
+            "value": "luminosity"
+          },
+          {
+            "selected": false,
+            "text": "carbon_monoxide_level",
+            "value": "carbon_monoxide_level"
+          },
+          {
+            "selected": false,
+            "text": "polution_particles_ppm",
+            "value": "polution_particles_ppm"
+          }
+        ],
+        "query": "all_data,noise_level,temperature,humidity,uv_level,luminosity,carbon_monoxide_level,polution_particles_ppm",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "marker",
+          "value": "marker"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "display",
+        "options": [
+          {
+            "selected": true,
+            "text": "marker",
+            "value": "marker"
+          },
+          {
+            "selected": false,
+            "text": "heatmap",
+            "value": "heatmap"
+          }
+        ],
+        "query": "marker,heatmap",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "2024-6-22",
+          "value": "2024-6-22"
+        },
+        "datasource": {
+          "type": "grafana-postgresql-datasource",
+          "uid": "edmegu124g35sa"
+        },
+        "definition": "SELECT DISTINCT\n  FORMAT('%s-%s-%s', \n    extract(YEAR from \"timestamp\") ,\n    extract(MONTH from \"timestamp\"),\n    extract(DAY from \"timestamp\")) AS formatted_date\nFROM dev.data_points",
+        "hide": 0,
+        "includeAll": false,
+        "multi": true,
+        "name": "Day",
+        "options": [],
+        "query": "SELECT DISTINCT\n  FORMAT('%s-%s-%s', \n    extract(YEAR from \"timestamp\") ,\n    extract(MONTH from \"timestamp\"),\n    extract(DAY from \"timestamp\")) AS formatted_date\nFROM dev.data_points",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "34",
+          "value": "34"
+        },
+        "datasource": {
+          "type": "grafana-postgresql-datasource",
+          "uid": "edmegu124g35sa"
+        },
+        "definition": "SELECT DISTINCT trip_id\nFROM dev.data_points\nWHERE DATE(\"timestamp\") IN (${Day})\n",
+        "hide": 0,
+        "includeAll": false,
+        "multi": true,
+        "name": "trip_id",
+        "options": [],
+        "query": "SELECT DISTINCT trip_id\nFROM dev.data_points\nWHERE DATE(\"timestamp\") IN (${Day})\n",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "0",
+          "value": "0"
+        },
+        "description": "",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "min_noise_level",
+        "options": [
+          {
+            "selected": true,
+            "text": "0",
+            "value": "0"
+          }
+        ],
+        "query": "0",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "500",
+          "value": "500"
+        },
+        "description": "",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "max_noise_level",
+        "options": [
+          {
+            "selected": true,
+            "text": "500",
+            "value": "500"
+          }
+        ],
+        "query": "500",
+        "queryValue": "500",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "10",
+          "value": "10"
+        },
+        "description": "",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "min_pretended_temperature",
+        "options": [
+          {
+            "selected": true,
+            "text": "10",
+            "value": "10"
+          }
+        ],
+        "query": "10",
+        "queryValue": "0",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "35",
+          "value": "35"
+        },
+        "description": "",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "max_pretended_temperature",
+        "options": [
+          {
+            "selected": true,
+            "text": "35",
+            "value": "35"
+          }
+        ],
+        "query": "35",
+        "queryValue": "35",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "0",
+          "value": "0"
+        },
+        "description": "",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "min_humidity",
+        "options": [
+          {
+            "selected": true,
+            "text": "0",
+            "value": "0"
+          }
+        ],
+        "query": "0",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "100",
+          "value": "100"
+        },
+        "description": "",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "max_humidity",
+        "options": [
+          {
+            "selected": true,
+            "text": "100",
+            "value": "100"
+          }
+        ],
+        "query": "100",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "0",
+          "value": "0"
+        },
+        "description": "",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "min_uv_level",
+        "options": [
+          {
+            "selected": true,
+            "text": "0",
+            "value": "0"
+          }
+        ],
+        "query": "0",
+        "queryValue": "0",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "20",
+          "value": "20"
+        },
+        "description": "",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "max_uv_level",
+        "options": [
+          {
+            "selected": true,
+            "text": "20",
+            "value": "20"
+          }
+        ],
+        "query": "20",
+        "queryValue": "200",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "0",
+          "value": "0"
+        },
+        "description": "",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "min_luminosity",
+        "options": [
+          {
+            "selected": true,
+            "text": "0",
+            "value": "0"
+          }
+        ],
+        "query": "0",
+        "queryValue": "0",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "3000",
+          "value": "3000"
+        },
+        "description": "",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "max_luminosity",
+        "options": [
+          {
+            "selected": true,
+            "text": "3000",
+            "value": "3000"
+          }
+        ],
+        "query": "3000",
+        "queryValue": "3000",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "0",
+          "value": "0"
+        },
+        "description": "",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "min_carbon_monoxide_level",
+        "options": [
+          {
+            "selected": true,
+            "text": "0",
+            "value": "0"
+          }
+        ],
+        "query": "0",
+        "queryValue": "-5",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "10",
+          "value": "10"
+        },
+        "description": "",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "max_carbon_monoxide_level",
+        "options": [
+          {
+            "selected": true,
+            "text": "10",
+            "value": "10"
+          }
+        ],
+        "query": "10",
+        "queryValue": "12",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "0",
+          "value": "0"
+        },
+        "description": "",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "min_polution_particles_pmm",
+        "options": [
+          {
+            "selected": true,
+            "text": "0",
+            "value": "0"
+          }
+        ],
+        "query": "0",
+        "queryValue": "-5",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "10",
+          "value": "10"
+        },
+        "description": "",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "max_polution_particles_pmm",
+        "options": [
+          {
+            "selected": true,
+            "text": "10",
+            "value": "10"
+          }
+        ],
+        "query": "10",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "dashboard final",
+  "uid": "ddmhqrc6w3aiod",
+  "version": 149,
+  "weekStart": ""
+}
